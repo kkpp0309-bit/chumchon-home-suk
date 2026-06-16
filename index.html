@@ -3,16 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#12785f">
+    <meta name="theme-color" content="#0b6b4f">
     <meta
       name="description"
-      content="ชุมชนโฮมสุข บริการดูแลบ้าน นัดหมายงาน ช่าง ผู้ขาย และข้อมูลติดต่อสำหรับใช้งานผ่าน LINE OA"
+      content="ชุมชนโฮมสุข บริการ ธ.ก.ส. เคลื่อนที่ใกล้บ้าน พร้อมตลาดชุมชน จังหวัดร้อยเอ็ด"
     >
-    <meta property="og:title" content="ชุมชนโฮมสุข">
-    <meta property="og:description" content="นัดหมายบริการ ดูตารางงาน สมัครผู้ขาย และติดต่อทีมงานได้ในหน้าเดียว">
+    <meta property="og:title" content="ชุมชนโฮมสุข | ธ.ก.ส. เคลื่อนที่ใกล้บ้าน">
+    <meta
+      property="og:description"
+      content="แจ้งความประสงค์ขอรับบริการ นัดหมายเจ้าหน้าที่ สมัครผู้ขาย ดูกำหนดการออกหน่วย และติดต่อทีมงาน ธ.ก.ส."
+    >
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/chumchon-home-suk-cover.svg">
-    <title>ชุมชนโฮมสุข</title>
+    <title>ชุมชนโฮมสุข | ธ.ก.ส. เคลื่อนที่ใกล้บ้าน</title>
     <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -21,10 +24,10 @@
 
     <header class="site-header" data-elevated="false">
       <a class="brand" href="#top" aria-label="กลับไปหน้าแรก">
-        <span class="brand-mark" aria-hidden="true">ช</span>
+        <span class="brand-mark" aria-hidden="true">ธ</span>
         <span>
           <strong>ชุมชนโฮมสุข</strong>
-          <small>Home Suk Community</small>
+          <small>BAAC Mobile Service • Roi Et</small>
         </span>
       </a>
       <button class="menu-toggle" type="button" aria-label="เปิดเมนู" aria-expanded="false">
@@ -33,10 +36,10 @@
         <span></span>
       </button>
       <nav class="site-nav" aria-label="เมนูหลัก">
-        <a href="#service">บริการ</a>
+        <a href="#service">ขอรับบริการ</a>
         <a href="#appointment">นัดหมาย</a>
         <a href="#seller">ผู้ขาย</a>
-        <a href="#schedule">ตารางงาน</a>
+        <a href="#schedule">กำหนดการ</a>
         <a href="#contact">ติดต่อ</a>
       </nav>
     </header>
@@ -44,142 +47,261 @@
     <main id="top">
       <section class="hero section-band">
         <div class="hero-copy">
-          <p class="eyebrow">สำหรับ LINE OA และ Rich Menu</p>
+          <p class="eyebrow">ธ.ก.ส. นำธนาคารมาไว้ใกล้บ้าน</p>
           <h1>ชุมชนโฮมสุข</h1>
           <p class="lead">
-            ศูนย์รวมบริการดูแลบ้าน นัดหมายงาน แจ้งซ่อม สมัครผู้ขาย และติดต่อทีมงาน
-            ออกแบบให้เปิดจากมือถือได้เร็วและใช้งานง่าย
+            บริการ ธ.ก.ส. เคลื่อนที่ใกล้บ้าน พร้อมตลาดชุมชน
+            แจ้งความประสงค์ นัดหมายพนักงาน สมัครผู้ขายสินค้า ดูกำหนดการออกหน่วย
+            และติดต่อทีมงานได้ในหน้าเดียว
           </p>
           <div class="hero-actions" aria-label="การดำเนินการหลัก">
-            <a class="button primary" href="#appointment">นัดหมายบริการ</a>
-            <a class="button secondary" href="#contact">ติดต่อผ่าน LINE</a>
+            <a class="button primary" href="#service">เริ่มแจ้งความประสงค์</a>
+            <a class="button secondary" href="#schedule">ดูกำหนดการ</a>
           </div>
         </div>
-        <figure class="hero-visual" aria-label="ภาพประกอบชุมชนและบ้าน">
-          <img src="assets/chumchon-home-suk-cover.svg" alt="บ้านและพื้นที่ชุมชนโฮมสุข">
+        <figure class="hero-visual" aria-label="ภาพประกอบบริการ ธ.ก.ส. เคลื่อนที่และตลาดชุมชน">
+          <img src="assets/chumchon-home-suk-cover.svg" alt="รถบริการ ธ.ก.ส. เคลื่อนที่ใกล้บ้านและตลาดชุมชน">
         </figure>
       </section>
 
-      <section class="section-band compact" id="service">
+      <section class="section-band compact" aria-labelledby="highlight-title">
         <div class="section-heading">
-          <p class="eyebrow">SERVICE</p>
-          <h2>บริการหลัก</h2>
-          <p>เลือกบริการที่ต้องการจาก Rich Menu แล้วส่งรายละเอียดให้ทีมงานประสานต่อได้ทันที</p>
+          <p class="eyebrow">HIGHLIGHTS</p>
+          <h2 id="highlight-title">บริการเด่น</h2>
+          <p>ออกแบบเป็นหน้า landing จาก LINE OA Rich Menu เพื่อให้ประชาชนเลือกเรื่องที่ต้องการได้เร็ว</p>
         </div>
-        <div class="card-grid">
-          <article class="info-card">
-            <h3>ดูแลและซ่อมแซมบ้าน</h3>
-            <p>งานช่างทั่วไป ไฟฟ้า ประปา แอร์ ทำความสะอาด และงานปรับปรุงพื้นที่ขนาดเล็ก</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span>01</span>
+            <h3>สินเชื่อและคำปรึกษาทางการเงิน</h3>
+            <p>ปรึกษาสินเชื่อใหม่ ปรับโครงสร้างหนี้ และตรวจเอกสารเบื้องต้นก่อนพบพนักงาน</p>
           </article>
-          <article class="info-card">
-            <h3>แม่บ้านและดูแลผู้สูงอายุ</h3>
-            <p>ช่วยประสานผู้ให้บริการในชุมชนตามช่วงเวลาและลักษณะงานที่เหมาะสม</p>
+          <article class="feature-card">
+            <span>02</span>
+            <h3>เงินฝาก / BAAC Mobile</h3>
+            <p>แนะนำบัญชี เงินฝาก ธุรกรรมพื้นฐาน และการใช้งาน BAAC Mobile อย่างมั่นใจ</p>
           </article>
-          <article class="info-card">
-            <h3>สินค้าและบริการชุมชน</h3>
-            <p>รวมร้านค้า ผู้ผลิตท้องถิ่น และบริการใกล้บ้าน เพื่อให้ลูกค้าค้นหาได้สะดวก</p>
+          <article class="feature-card">
+            <span>03</span>
+            <h3>นัดหมายเจ้าหน้าที่ล่วงหน้า</h3>
+            <p>ลดเวลารอคิว เตรียมเอกสารให้พร้อม และจัดคิวบริการตามพื้นที่ออกหน่วย</p>
           </article>
+          <article class="feature-card">
+            <span>04</span>
+            <h3>พื้นที่ตลาดสินค้าชุมชน</h3>
+            <p>เปิดโอกาสให้เกษตรกร กลุ่มอาชีพ และร้านค้าในพื้นที่เข้าร่วมจำหน่ายสินค้า</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="quick-menu" aria-label="เมนูลัดสำหรับ Rich Menu">
+        <a href="#service"><strong>แจ้งขอรับบริการ</strong><span>กรอกความต้องการ</span></a>
+        <a href="#appointment"><strong>นัดหมาย</strong><span>เลือกวัน เวลา สถานที่</span></a>
+        <a href="#seller"><strong>ผู้ขายเข้าร่วม</strong><span>ลงทะเบียนร้านค้า</span></a>
+        <a href="#schedule"><strong>กำหนดการ</strong><span>จุดออกให้บริการ</span></a>
+        <a href="#contact"><strong>ติดต่อพนักงาน</strong><span>สอบถาม/ประสานงาน</span></a>
+        <a href="#flow"><strong>Flow หลังบ้าน</strong><span>แนวทางจัดการข้อมูล</span></a>
+      </section>
+
+      <section class="section-band service-section" id="service">
+        <div class="section-heading">
+          <p class="eyebrow">1. SERVICE REQUEST</p>
+          <h2>แจ้งความประสงค์ขอรับบริการ</h2>
+          <p>เลือกบริการ ธ.ก.ส. เคลื่อนที่ที่ต้องการ แล้วส่งข้อมูลให้เจ้าหน้าที่เตรียมประสานงานล่วงหน้า</p>
+        </div>
+        <div class="service-layout">
+          <div class="service-types" aria-label="ประเภทบริการ ธ.ก.ส.">
+            <article>
+              <span>สินเชื่อ</span>
+              <p>ปรึกษาสินเชื่อใหม่ ปรับโครงสร้างหนี้ ตรวจสอบเอกสารเบื้องต้น</p>
+            </article>
+            <article>
+              <span>เงินฝาก</span>
+              <p>เปิดบัญชี แนะนำเงินฝาก ตรวจสอบข้อมูลบัญชีเบื้องต้น</p>
+            </article>
+            <article>
+              <span>BAAC Mobile</span>
+              <p>สมัคร แนะนำการใช้งาน แก้ปัญหาเบื้องต้น และส่งเสริมธุรกรรมดิจิทัล</p>
+            </article>
+            <article>
+              <span>ประกันภัย/สวัสดิการ</span>
+              <p>รับคำปรึกษาผลิตภัณฑ์คุ้มครองและสวัสดิการที่เกี่ยวข้อง</p>
+            </article>
+          </div>
+          <form class="form-panel" name="service-request" data-netlify="true">
+            <input type="hidden" name="form-name" value="service-request">
+            <label>
+              ชื่อ-สกุล
+              <input name="name" autocomplete="name" placeholder="เช่น นายสมชาย ใจดี" required>
+            </label>
+            <label>
+              เบอร์โทร
+              <input name="phone" autocomplete="tel" placeholder="08x-xxx-xxxx" required>
+            </label>
+            <label>
+              หมู่บ้าน/ตำบล
+              <input name="area" placeholder="ระบุพื้นที่รับบริการ" required>
+            </label>
+            <label>
+              ประเภทบริการ
+              <select name="service_type" required>
+                <option value="">เลือกบริการ</option>
+                <option>สินเชื่อ</option>
+                <option>เงินฝาก</option>
+                <option>BAAC Mobile</option>
+                <option>ประกันภัย/สวัสดิการ</option>
+                <option>อื่น ๆ</option>
+              </select>
+            </label>
+            <label>
+              รายละเอียดเพิ่มเติม
+              <textarea name="detail" rows="4" placeholder="ระบุความต้องการหรือปัญหาที่ต้องการให้ช่วยเหลือ"></textarea>
+            </label>
+            <button class="button primary full-width" type="submit">ส่งข้อมูลให้เจ้าหน้าที่</button>
+            <p class="form-note">ต้นแบบนี้สามารถเปลี่ยนปุ่มให้เชื่อม Google Form หรือ LINE OA Form จริงได้</p>
+          </form>
         </div>
       </section>
 
       <section class="section-band split" id="appointment">
         <div class="section-heading">
-          <p class="eyebrow">APPOINTMENT</p>
-          <h2>นัดหมายบริการ</h2>
-          <p>กรอกข้อมูลสั้น ๆ เพื่อให้ทีมงานติดต่อกลับและจัดคิวบริการที่เหมาะกับพื้นที่ของคุณ</p>
+          <p class="eyebrow">2. APPOINTMENT</p>
+          <h2>นัดหมายรับบริการ</h2>
+          <p>
+            เหมาะสำหรับลูกค้าที่ต้องเตรียมเอกสารก่อนพบพนักงาน
+            กลุ่มเกษตรกร ผู้สูงอายุ และผู้ที่ต้องการคำแนะนำเฉพาะราย
+          </p>
+          <ul class="check-list">
+            <li>ลดเวลารอคิวในวันออกหน่วย</li>
+            <li>ช่วยให้พนักงานเตรียมเอกสารและข้อมูลเบื้องต้น</li>
+            <li>ประสานสถานที่บริการในชุมชนได้ชัดเจน</li>
+          </ul>
         </div>
-        <form class="appointment-form" name="appointment" data-netlify="true">
+        <form class="form-panel" name="appointment" data-netlify="true">
           <input type="hidden" name="form-name" value="appointment">
           <label>
-            ชื่อผู้ติดต่อ
-            <input name="name" autocomplete="name" placeholder="เช่น คุณมะลิ" required>
+            เลือกวันที่
+            <input name="date" type="date" required>
           </label>
           <label>
-            เบอร์โทรหรือ LINE ID
-            <input name="contact" autocomplete="tel" placeholder="ระบุช่องทางติดต่อกลับ" required>
-          </label>
-          <label>
-            บริการที่ต้องการ
-            <select name="service" required>
-              <option value="">เลือกบริการ</option>
-              <option>ซ่อมแซมบ้าน</option>
-              <option>ทำความสะอาด</option>
-              <option>ดูแลผู้สูงอายุ</option>
-              <option>สินค้าและบริการชุมชน</option>
+            ช่วงเวลา
+            <select name="time" required>
+              <option>09.00-10.00 น.</option>
+              <option>10.00-11.00 น.</option>
+              <option>13.00-14.00 น.</option>
+              <option>14.00-15.00 น.</option>
             </select>
           </label>
           <label>
-            รายละเอียดเพิ่มเติม
-            <textarea name="message" rows="4" placeholder="แจ้งพื้นที่ วันเวลาที่สะดวก หรือรายละเอียดงาน"></textarea>
+            สถานที่
+            <input name="location" placeholder="จุดบริการชุมชน / ศาลาประชาคม / อบต." required>
           </label>
-          <button class="button primary full-width" type="submit">ส่งคำขอนัดหมาย</button>
-          <p class="form-note">เมื่อ deploy บน Netlify ฟอร์มนี้พร้อมรับข้อมูลผ่าน Netlify Forms</p>
+          <label>
+            เรื่องที่ต้องการนัดหมาย
+            <textarea name="appointment_detail" rows="4" placeholder="เช่น ปรึกษาสินเชื่อ ตรวจเอกสาร สมัคร BAAC Mobile"></textarea>
+          </label>
+          <button class="button primary full-width" type="submit">จองนัดหมาย</button>
         </form>
       </section>
 
       <section class="section-band compact accent" id="seller">
         <div class="section-heading">
-          <p class="eyebrow">SELLER</p>
-          <h2>สมัครเป็นผู้ขายหรือผู้ให้บริการ</h2>
-          <p>เหมาะสำหรับร้านค้า ช่าง ผู้ให้บริการอิสระ และกลุ่มอาชีพในชุมชนที่ต้องการเพิ่มช่องทางรับงาน</p>
+          <p class="eyebrow">3. COMMUNITY MARKET</p>
+          <h2>ผู้ขายสินค้าเข้าร่วมโครงการ</h2>
+          <p>
+            เปิดพื้นที่ให้เกษตรกร กลุ่มอาชีพ และร้านค้าในชุมชนแจ้งความประสงค์เข้าร่วมงาน
+            เพื่อจัดพื้นที่จำหน่ายสินค้าในวันที่ ธ.ก.ส. ลงพื้นที่ให้บริการ
+          </p>
         </div>
-        <div class="steps">
-          <article>
-            <span>1</span>
-            <h3>ลงทะเบียนข้อมูล</h3>
-            <p>แจ้งชื่อบริการ พื้นที่ให้บริการ และช่องทางติดต่อ</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>ตรวจสอบคุณภาพ</h3>
-            <p>ทีมงานพูดคุยและจัดหมวดหมู่บริการให้เหมาะกับลูกค้า</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>เริ่มรับงาน</h3>
-            <p>ลูกค้ากดจาก LINE Rich Menu แล้วทีมงานช่วยประสานงาน</p>
-          </article>
+        <div class="seller-layout">
+          <div class="tag-cloud" aria-label="ตัวอย่างสินค้าชุมชน">
+            <span>ข้าวสาร</span>
+            <span>ผักปลอดภัย</span>
+            <span>อาหารแปรรูป</span>
+            <span>งานหัตถกรรม</span>
+            <span>ผลไม้ตามฤดูกาล</span>
+          </div>
+          <form class="form-panel" name="seller" data-netlify="true">
+            <input type="hidden" name="form-name" value="seller">
+            <label>
+              ชื่อร้าน/กลุ่ม
+              <input name="shop_name" placeholder="เช่น กลุ่มแม่บ้านบ้านโฮมสุข" required>
+            </label>
+            <label>
+              ประเภทสินค้า
+              <input name="product_type" placeholder="เช่น ข้าวหอมมะลิ / ผักสด" required>
+            </label>
+            <label>
+              จำนวนที่นำมาจำหน่าย
+              <input name="quantity" placeholder="เช่น 50 ถุง / 30 กก.">
+            </label>
+            <label>
+              ช่องทางติดต่อ
+              <input name="seller_contact" placeholder="เบอร์โทรหรือ LINE ID" required>
+            </label>
+            <button class="button secondary full-width" type="submit">สมัครผู้ขายเข้าร่วม</button>
+          </form>
         </div>
-        <a class="button secondary wide" href="#contact">ติดต่อสมัครผู้ขาย</a>
       </section>
 
       <section class="section-band compact" id="schedule">
         <div class="section-heading">
-          <p class="eyebrow">SCHEDULE</p>
-          <h2>ตารางงานและเวลาทำการ</h2>
-          <p>ใช้ส่วนนี้เป็นหน้าปลายทางสำหรับปุ่ม Rich Menu ที่ต้องการให้ลูกค้าเช็กช่วงเวลาบริการ</p>
+          <p class="eyebrow">4. SCHEDULE</p>
+          <h2>กำหนดการออกให้บริการ</h2>
+          <p>ใช้เป็นหน้าปลายทางของปุ่มกำหนดการใน Rich Menu เพื่อแจ้งขั้นตอนและช่วงเวลาลงพื้นที่</p>
         </div>
-        <div class="schedule-list" aria-label="ตารางเวลาบริการ">
-          <div>
-            <strong>จันทร์ - ศุกร์</strong>
-            <span>09:00 - 18:00 น.</span>
-          </div>
-          <div>
-            <strong>เสาร์</strong>
-            <span>09:00 - 15:00 น.</span>
-          </div>
-          <div>
-            <strong>อาทิตย์และวันหยุดนักขัตฤกษ์</strong>
-            <span>รับเรื่องผ่าน LINE OA</span>
-          </div>
+        <div class="timeline" aria-label="ปฏิทินออกหน่วย">
+          <article>
+            <strong>สัปดาห์ที่ 1</strong>
+            <p>ประชาสัมพันธ์ผ่าน LINE OA ผู้นำชุมชน อสม. สหกรณ์ และเครือข่ายในพื้นที่</p>
+          </article>
+          <article>
+            <strong>สัปดาห์ที่ 2</strong>
+            <p>เปิดรับแจ้งความประสงค์ นัดหมายล่วงหน้า และลงทะเบียนผู้ขายสินค้า</p>
+          </article>
+          <article>
+            <strong>สัปดาห์ที่ 3</strong>
+            <p>ทีม ธ.ก.ส. ลงพื้นที่ให้บริการ พร้อมตลาดสินค้าชุมชน</p>
+          </article>
+          <article>
+            <strong>หลังจบงาน</strong>
+            <p>สรุปผลบริการ ยอดนัดหมาย ยอดผู้ขาย และติดตามผลลูกค้า</p>
+          </article>
         </div>
       </section>
 
       <section class="section-band contact" id="contact">
         <div>
-          <p class="eyebrow">CONTACT</p>
-          <h2>ติดต่อชุมชนโฮมสุข</h2>
-          <p>สอบถามบริการ นัดหมายงาน หรือสมัครเป็นผู้ขายได้ผ่านช่องทางหลักของชุมชนโฮมสุข</p>
+          <p class="eyebrow">5. CONTACT</p>
+          <h2>ติดต่อพนักงาน</h2>
+          <p>สอบถามข้อมูล ประสานงานออกหน่วย หรือเชื่อมต่อ LINE OA ของโครงการชุมชนโฮมสุข</p>
         </div>
         <div class="contact-actions">
-          <a class="button primary" href="https://line.me/R/ti/p/@chumchonhomesuk" rel="noopener">เปิด LINE OA</a>
-          <a class="button secondary" href="tel:020000000">โทรหาเรา</a>
+          <a class="button primary" href="tel:020000000">โทรหาทีมงาน</a>
+          <a class="button secondary" href="https://line.me/R/ti/p/@chumchonhomesuk" rel="noopener">แชท LINE OA</a>
+          <a class="button tertiary" href="https://maps.google.com/?q=BAAC%20Roi%20Et" rel="noopener">ดูจุดบริการ</a>
+        </div>
+      </section>
+
+      <section class="section-band compact" id="flow">
+        <div class="section-heading">
+          <p class="eyebrow">BACK OFFICE</p>
+          <h2>Flow งานที่แนะนำ</h2>
+          <p>แนวทางเชื่อมข้อมูลจาก Rich Menu ไปสู่การทำงานของเจ้าหน้าที่และ dashboard หลังบ้าน</p>
+        </div>
+        <div class="flow-grid">
+          <article><span>1</span><p>ลูกค้าคลิก Rich Menu</p></article>
+          <article><span>2</span><p>กรอกฟอร์มขอรับบริการ นัดหมาย หรือสมัครผู้ขาย</p></article>
+          <article><span>3</span><p>ข้อมูลเข้า Google Sheet แยกแท็บตามประเภท</p></article>
+          <article><span>4</span><p>แจ้งเตือน Admin ผ่าน LINE Messaging API</p></article>
+          <article><span>5</span><p>Admin มอบหมายพนักงานและยืนยันนัดหมาย</p></article>
+          <article><span>6</span><p>สรุป dashboard รายวัน รายพื้นที่ และรายบริการ</p></article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> ชุมชนโฮมสุข</p>
+      <p>© <span id="year"></span> ชุมชนโฮมสุข | ต้นแบบเว็บไซต์เชื่อม Rich Menu LINE OA ธ.ก.ส. ร้อยเอ็ด</p>
       <a href="#top">กลับขึ้นด้านบน</a>
     </footer>
 
