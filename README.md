@@ -1,53 +1,27 @@
 # ชุมชนโฮมสุข
 
-Static website for LINE OA Rich Menu destinations.
+Static website prototype for BAAC Mobile Service in Roi Et, designed as the destination website for LINE OA Rich Menu.
+
+## Concept
+
+ชุมชนโฮมสุข: ธ.ก.ส. นำธนาคารมาไว้ใกล้บ้าน
+
+The website supports:
+
+- แจ้งความประสงค์ขอรับบริการ
+- นัดหมายรับบริการ
+- ผู้ขายสินค้าเข้าร่วมโครงการ
+- กำหนดการออกหน่วย
+- ติดต่อพนักงาน
+- Flow งานหลังบ้านสำหรับทีม Admin
 
 ## Files
 
 - `index.html` - main page and Thai content
 - `style.css` - responsive layout for mobile and desktop
 - `script.js` - mobile menu and header behavior
-- `netlify.toml` - Netlify publish and redirect config
-- `vercel.json` - Vercel redirect config
-
-## Rich Menu URLs
-
-After deployment, replace `https://your-domain.example` with the live URL:
-
-- `https://your-domain.example/#service`
-- `https://your-domain.example/#appointment`
-- `https://your-domain.example/#seller`
-- `https://your-domain.example/#schedule`
-- `https://your-domain.example/#contact`
-
-Optional clean paths are also configured:
-
-- `https://your-domain.example/service`
-- `https://your-domain.example/appointment`
-- `https://your-domain.example/seller`
-- `https://your-domain.example/schedule`
-- `https://your-domain.example/contact`
-
-## Deploy
-
-Netlify:
-
-1. Create a new site from Git.
-2. Choose this repository.
-3. Leave build command empty.
-4. Set publish directory to `.`.
-
-Vercel:
-
-1. Import this repository.
-2. Use Framework Preset: Other.
-3. Leave build command empty.
-4. Keep output directory empty or `.`.
-
-## Before going live
-
-- Replace the LINE OA URL in `index.html` if `@chumchonhomesuk` is not the final official account.
-- Replace the telephone link in `index.html` when the official phone number is confirmed.
+- `assets/chumchon-home-suk-cover.svg` - hero illustration
+- `.nojekyll` - GitHub Pages static publishing helper
 
 ## GitHub Pages
 
@@ -57,10 +31,21 @@ Publish source:
 - Folder: `/` root
 - Entry page: `index.html`
 
-Expected Rich Menu URLs after GitHub Pages is ready:
+Live URL:
 
-- `https://YOUR-GITHUB-USERNAME.github.io/chumchon-home-suk/#service`
-- `https://YOUR-GITHUB-USERNAME.github.io/chumchon-home-suk/#appointment`
-- `https://YOUR-GITHUB-USERNAME.github.io/chumchon-home-suk/#seller`
-- `https://YOUR-GITHUB-USERNAME.github.io/chumchon-home-suk/#schedule`
-- `https://YOUR-GITHUB-USERNAME.github.io/chumchon-home-suk/#contact`
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/`
+
+## Rich Menu URLs
+
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/#service`
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/#appointment`
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/#seller`
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/#schedule`
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/#contact`
+- `https://kkpp0309-bit.github.io/chumchon-home-suk/#flow`
+
+## Before going live
+
+- Replace the LINE OA URL in `index.html` when the final official account is confirmed.
+- Replace the telephone link in `index.html` with the official branch/team phone number.
+- Replace prototype forms with Google Forms, LIFF forms, or a real backend workflow when ready.
