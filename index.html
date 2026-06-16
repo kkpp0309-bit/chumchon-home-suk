@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#12785f">
+    <meta
+      name="description"
+      content="ชุมชนโฮมสุข บริการดูแลบ้าน นัดหมายงาน ช่าง ผู้ขาย และข้อมูลติดต่อสำหรับใช้งานผ่าน LINE OA"
+    >
+    <meta property="og:title" content="ชุมชนโฮมสุข">
+    <meta property="og:description" content="นัดหมายบริการ ดูตารางงาน สมัครผู้ขาย และติดต่อทีมงานได้ในหน้าเดียว">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/chumchon-home-suk-cover.svg">
+    <title>ชุมชนโฮมสุข</title>
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#service">ข้ามไปยังบริการ</a>
+
+    <header class="site-header" data-elevated="false">
+      <a class="brand" href="#top" aria-label="กลับไปหน้าแรก">
+        <span class="brand-mark" aria-hidden="true">ช</span>
+        <span>
+          <strong>ชุมชนโฮมสุข</strong>
+          <small>Home Suk Community</small>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="เปิดเมนู" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" aria-label="เมนูหลัก">
+        <a href="#service">บริการ</a>
+        <a href="#appointment">นัดหมาย</a>
+        <a href="#seller">ผู้ขาย</a>
+        <a href="#schedule">ตารางงาน</a>
+        <a href="#contact">ติดต่อ</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow">สำหรับ LINE OA และ Rich Menu</p>
+          <h1>ชุมชนโฮมสุข</h1>
+          <p class="lead">
+            ศูนย์รวมบริการดูแลบ้าน นัดหมายงาน แจ้งซ่อม สมัครผู้ขาย และติดต่อทีมงาน
+            ออกแบบให้เปิดจากมือถือได้เร็วและใช้งานง่าย
+          </p>
+          <div class="hero-actions" aria-label="การดำเนินการหลัก">
+            <a class="button primary" href="#appointment">นัดหมายบริการ</a>
+            <a class="button secondary" href="#contact">ติดต่อผ่าน LINE</a>
+          </div>
+        </div>
+        <figure class="hero-visual" aria-label="ภาพประกอบชุมชนและบ้าน">
+          <img src="assets/chumchon-home-suk-cover.svg" alt="บ้านและพื้นที่ชุมชนโฮมสุข">
+        </figure>
+      </section>
+
+      <section class="section-band compact" id="service">
+        <div class="section-heading">
+          <p class="eyebrow">SERVICE</p>
+          <h2>บริการหลัก</h2>
+          <p>เลือกบริการที่ต้องการจาก Rich Menu แล้วส่งรายละเอียดให้ทีมงานประสานต่อได้ทันที</p>
+        </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>ดูแลและซ่อมแซมบ้าน</h3>
+            <p>งานช่างทั่วไป ไฟฟ้า ประปา แอร์ ทำความสะอาด และงานปรับปรุงพื้นที่ขนาดเล็ก</p>
+          </article>
+          <article class="info-card">
+            <h3>แม่บ้านและดูแลผู้สูงอายุ</h3>
+            <p>ช่วยประสานผู้ให้บริการในชุมชนตามช่วงเวลาและลักษณะงานที่เหมาะสม</p>
+          </article>
+          <article class="info-card">
+            <h3>สินค้าและบริการชุมชน</h3>
+            <p>รวมร้านค้า ผู้ผลิตท้องถิ่น และบริการใกล้บ้าน เพื่อให้ลูกค้าค้นหาได้สะดวก</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band split" id="appointment">
+        <div class="section-heading">
+          <p class="eyebrow">APPOINTMENT</p>
+          <h2>นัดหมายบริการ</h2>
+          <p>กรอกข้อมูลสั้น ๆ เพื่อให้ทีมงานติดต่อกลับและจัดคิวบริการที่เหมาะกับพื้นที่ของคุณ</p>
+        </div>
+        <form class="appointment-form" name="appointment" data-netlify="true">
+          <input type="hidden" name="form-name" value="appointment">
+          <label>
+            ชื่อผู้ติดต่อ
+            <input name="name" autocomplete="name" placeholder="เช่น คุณมะลิ" required>
+          </label>
+          <label>
+            เบอร์โทรหรือ LINE ID
+            <input name="contact" autocomplete="tel" placeholder="ระบุช่องทางติดต่อกลับ" required>
+          </label>
+          <label>
+            บริการที่ต้องการ
+            <select name="service" required>
+              <option value="">เลือกบริการ</option>
+              <option>ซ่อมแซมบ้าน</option>
+              <option>ทำความสะอาด</option>
+              <option>ดูแลผู้สูงอายุ</option>
+              <option>สินค้าและบริการชุมชน</option>
+            </select>
+          </label>
+          <label>
+            รายละเอียดเพิ่มเติม
+            <textarea name="message" rows="4" placeholder="แจ้งพื้นที่ วันเวลาที่สะดวก หรือรายละเอียดงาน"></textarea>
+          </label>
+          <button class="button primary full-width" type="submit">ส่งคำขอนัดหมาย</button>
+          <p class="form-note">เมื่อ deploy บน Netlify ฟอร์มนี้พร้อมรับข้อมูลผ่าน Netlify Forms</p>
+        </form>
+      </section>
+
+      <section class="section-band compact accent" id="seller">
+        <div class="section-heading">
+          <p class="eyebrow">SELLER</p>
+          <h2>สมัครเป็นผู้ขายหรือผู้ให้บริการ</h2>
+          <p>เหมาะสำหรับร้านค้า ช่าง ผู้ให้บริการอิสระ และกลุ่มอาชีพในชุมชนที่ต้องการเพิ่มช่องทางรับงาน</p>
+        </div>
+        <div class="steps">
+          <article>
+            <span>1</span>
+            <h3>ลงทะเบียนข้อมูล</h3>
+            <p>แจ้งชื่อบริการ พื้นที่ให้บริการ และช่องทางติดต่อ</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>ตรวจสอบคุณภาพ</h3>
+            <p>ทีมงานพูดคุยและจัดหมวดหมู่บริการให้เหมาะกับลูกค้า</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>เริ่มรับงาน</h3>
+            <p>ลูกค้ากดจาก LINE Rich Menu แล้วทีมงานช่วยประสานงาน</p>
+          </article>
+        </div>
+        <a class="button secondary wide" href="#contact">ติดต่อสมัครผู้ขาย</a>
+      </section>
+
+      <section class="section-band compact" id="schedule">
+        <div class="section-heading">
+          <p class="eyebrow">SCHEDULE</p>
+          <h2>ตารางงานและเวลาทำการ</h2>
+          <p>ใช้ส่วนนี้เป็นหน้าปลายทางสำหรับปุ่ม Rich Menu ที่ต้องการให้ลูกค้าเช็กช่วงเวลาบริการ</p>
+        </div>
+        <div class="schedule-list" aria-label="ตารางเวลาบริการ">
+          <div>
+            <strong>จันทร์ - ศุกร์</strong>
+            <span>09:00 - 18:00 น.</span>
+          </div>
+          <div>
+            <strong>เสาร์</strong>
+            <span>09:00 - 15:00 น.</span>
+          </div>
+          <div>
+            <strong>อาทิตย์และวันหยุดนักขัตฤกษ์</strong>
+            <span>รับเรื่องผ่าน LINE OA</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band contact" id="contact">
+        <div>
+          <p class="eyebrow">CONTACT</p>
+          <h2>ติดต่อชุมชนโฮมสุข</h2>
+          <p>สอบถามบริการ นัดหมายงาน หรือสมัครเป็นผู้ขายได้ผ่านช่องทางหลักของชุมชนโฮมสุข</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary" href="https://line.me/R/ti/p/@chumchonhomesuk" rel="noopener">เปิด LINE OA</a>
+          <a class="button secondary" href="tel:020000000">โทรหาเรา</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> ชุมชนโฮมสุข</p>
+      <a href="#top">กลับขึ้นด้านบน</a>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
