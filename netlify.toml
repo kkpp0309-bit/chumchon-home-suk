@@ -1,0 +1,34 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/service"
+  to = "/#service"
+  status = 301
+
+[[redirects]]
+  from = "/appointment"
+  to = "/#appointment"
+  status = 301
+
+[[redirects]]
+  from = "/seller"
+  to = "/#seller"
+  status = 301
+
+[[redirects]]
+  from = "/schedule"
+  to = "/#schedule"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
