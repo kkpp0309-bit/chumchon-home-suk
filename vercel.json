@@ -1,0 +1,20 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/service", "destination": "/#service", "permanent": true },
+    { "source": "/appointment", "destination": "/#appointment", "permanent": true },
+    { "source": "/seller", "destination": "/#seller", "permanent": true },
+    { "source": "/schedule", "destination": "/#schedule", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true }
+  ]
+}
