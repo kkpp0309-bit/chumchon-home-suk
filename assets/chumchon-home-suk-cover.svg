@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">ชุมชนโฮมสุข</title>
+  <desc id="desc">ภาพบ้านสีอบอุ่น พื้นที่ชุมชน และต้นไม้</desc>
+  <rect width="960" height="720" fill="#f6faf8"/>
+  <path d="M0 502c112-54 219-73 321-57 125 19 200 88 329 79 104-7 188-63 310-44v240H0z" fill="#dff0e7"/>
+  <path d="M0 570c153-49 273-42 359 21 95 70 181 95 299 40 96-44 199-61 302-24v113H0z" fill="#b9ddca"/>
+  <circle cx="764" cy="142" r="66" fill="#f5bb41"/>
+  <g transform="translate(132 224)">
+    <rect x="100" y="181" width="392" height="230" rx="24" fill="#fff" stroke="#cddfd6" stroke-width="8"/>
+    <path d="M70 207 296 28l226 179v26H70z" fill="#12785f"/>
+    <path d="M126 196 296 62l170 134z" fill="#e86f51"/>
+    <rect x="248" y="284" width="96" height="127" rx="10" fill="#123d35"/>
+    <rect x="142" y="270" width="72" height="72" rx="12" fill="#e8f5ef"/>
+    <rect x="378" y="270" width="72" height="72" rx="12" fill="#e8f5ef"/>
+    <path d="M272 348h48" stroke="#f5bb41" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(616 306)">
+    <rect x="48" y="116" width="176" height="128" rx="18" fill="#fff" stroke="#cddfd6" stroke-width="7"/>
+    <path d="M28 128 136 42l108 86v18H28z" fill="#123d35"/>
+    <rect x="82" y="162" width="42" height="82" rx="8" fill="#12785f"/>
+    <rect x="152" y="164" width="42" height="42" rx="8" fill="#e8f5ef"/>
+  </g>
+  <g fill="#12785f">
+    <path d="M739 409c36-58 98-62 132-28-31 9-45 30-39 63-31-27-61-29-93-35z"/>
+    <path d="M721 451c23-47 73-60 110-38-26 12-36 31-27 57-29-18-55-18-83-19z"/>
+  </g>
+  <path d="M754 431c20 53 12 103-24 151" stroke="#123d35" stroke-width="12" stroke-linecap="round"/>
+  <g transform="translate(86 518)" fill="#123d35">
+    <circle cx="0" cy="0" r="18"/>
+    <circle cx="74" cy="-20" r="18"/>
+    <circle cx="148" cy="0" r="18"/>
+    <path d="M-22 70c8-36 36-55 65-55s57 19 65 55z" opacity=".8"/>
+    <path d="M52 50c7-31 32-48 58-48s51 17 58 48z" opacity=".8"/>
+    <path d="M126 70c8-36 36-55 65-55s57 19 65 55z" opacity=".8"/>
+  </g>
+</svg>
