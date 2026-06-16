@@ -243,6 +243,11 @@ a {
   width: 100%;
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: .72;
+}
+
 .hero-visual {
   margin-top: 0;
   margin-bottom: 0;
@@ -250,6 +255,8 @@ a {
 
 .hero-visual img {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -429,6 +436,25 @@ textarea:focus {
   margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.form-status {
+  min-height: 24px;
+  margin: 0;
+  font-weight: 800;
+  font-size: 0.94rem;
+}
+
+.form-status[data-status="loading"] {
+  color: #2d77a8;
+}
+
+.form-status[data-status="success"] {
+  color: var(--green-700);
+}
+
+.form-status[data-status="error"] {
+  color: #a33d2b;
 }
 
 .check-list {

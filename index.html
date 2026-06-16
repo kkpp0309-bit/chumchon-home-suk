@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="th">
   <head>
     <meta charset="utf-8">
@@ -128,7 +128,7 @@
               <p>รับคำปรึกษาผลิตภัณฑ์คุ้มครองและสวัสดิการที่เกี่ยวข้อง</p>
             </article>
           </div>
-          <form class="form-panel" name="service-request" data-netlify="true">
+          <form class="form-panel" name="service-request" data-home-suk-form="service-request" data-form-title="แจ้งความประสงค์ขอรับบริการ">
             <input type="hidden" name="form-name" value="service-request">
             <label>
               ชื่อ-สกุล
@@ -158,7 +158,8 @@
               <textarea name="detail" rows="4" placeholder="ระบุความต้องการหรือปัญหาที่ต้องการให้ช่วยเหลือ"></textarea>
             </label>
             <button class="button primary full-width" type="submit">ส่งข้อมูลให้เจ้าหน้าที่</button>
-            <p class="form-note">ต้นแบบนี้สามารถเปลี่ยนปุ่มให้เชื่อม Google Form หรือ LINE OA Form จริงได้</p>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+            <p class="form-note">ข้อมูลจะถูกส่งเข้า Google Sheet ของแอดมินเมื่อเชื่อมต่อ URL หลังบ้านเรียบร้อย</p>
           </form>
         </div>
       </section>
@@ -177,7 +178,7 @@
             <li>ประสานสถานที่บริการในชุมชนได้ชัดเจน</li>
           </ul>
         </div>
-        <form class="form-panel" name="appointment" data-netlify="true">
+        <form class="form-panel" name="appointment" data-home-suk-form="appointment" data-form-title="นัดหมายรับบริการ">
           <input type="hidden" name="form-name" value="appointment">
           <label>
             เลือกวันที่
@@ -201,6 +202,7 @@
             <textarea name="appointment_detail" rows="4" placeholder="เช่น ปรึกษาสินเชื่อ ตรวจเอกสาร สมัคร BAAC Mobile"></textarea>
           </label>
           <button class="button primary full-width" type="submit">จองนัดหมาย</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
       </section>
 
@@ -221,7 +223,7 @@
             <span>งานหัตถกรรม</span>
             <span>ผลไม้ตามฤดูกาล</span>
           </div>
-          <form class="form-panel" name="seller" data-netlify="true">
+          <form class="form-panel" name="seller" data-home-suk-form="seller" data-form-title="ผู้ขายสินค้าเข้าร่วมโครงการ">
             <input type="hidden" name="form-name" value="seller">
             <label>
               ชื่อร้าน/กลุ่ม
@@ -240,6 +242,7 @@
               <input name="seller_contact" placeholder="เบอร์โทรหรือ LINE ID" required>
             </label>
             <button class="button secondary full-width" type="submit">สมัครผู้ขายเข้าร่วม</button>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -305,6 +308,11 @@
       <a href="#top">กลับขึ้นด้านบน</a>
     </footer>
 
+    <script>
+      window.HOME_SUK_CONFIG = {
+        formEndpoint: "",
+      };
+    </script>
     <script src="script.js" defer></script>
   </body>
 </html>
