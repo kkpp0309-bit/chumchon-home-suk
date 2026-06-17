@@ -3,9 +3,18 @@ const menuButton = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
 const year = document.querySelector("#year");
 const forms = document.querySelectorAll("form[data-home-suk-form]");
+const adminLoginForm = document.querySelector("[data-admin-login]");
+const adminDashboard = document.querySelector("[data-admin-dashboard]");
+const adminStatus = document.querySelector("[data-admin-status]");
+const adminStats = document.querySelector("[data-admin-stats]");
+const adminSummary = document.querySelector("[data-admin-summary]");
+const adminRecent = document.querySelector("[data-admin-recent]");
+const adminUpdated = document.querySelector("[data-admin-updated]");
+const adminRefresh = document.querySelector("[data-admin-refresh]");
 
 const config = window.HOME_SUK_CONFIG || {};
 const formEndpoint = (config.formEndpoint || "").trim();
+const adminPassword = "baac2024";
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -120,3 +129,162 @@ if (menuButton && nav) {
 forms.forEach((form) => {
   form.addEventListener("submit", submitHomeSukForm);
 });
+
+function setAdminStatus(message, type) {
+  if (!adminStatus) return;
+  adminStatus.textContent = message;
+  adminStatus.dataset.status = type;
+}
+
+function formatNumber(value) {
+  return new Intl.NumberFormat("th-TH").format(Number(value || 0));
+}
+
+function formatDateTime(value) {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return new Intl.DateTimeFormat("th-TH", {
+    dateStyle: "short",
+    timeStyle: "short",
+    timeZone: "Asia/Bangkok",
+  }).format(date);
+}
+
+function textCell(value) {
+  return String(value || "-")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function renderAdminDashboard(data) {
+  const totals = data.totals || {};
+  const totalNew = Number(totals.serviceNew || 0) + Number(totals.appointmentNew || 0) + Number(totals.sellerNew || 0);
+
+  if (adminStats) {
+    adminStats.innerHTML = [
+      ["serviceTotal", "ขอรับบริการทั้งหมด"],
+      ["appointmentTotal", "นัดหมายทั้งหมด"],
+      ["sellerTotal", "ผู้ขายทั้งหมด"],
+      ["newTotal", "งานใหม่ทั้งหมด"],
+    ].map(([key, label]) => {
+      const value = key === "newTotal" ? totalNew : totals[key];
+      return `<article><span>${formatNumber(value)}</span><p>${label}</p></article>`;
+    }).join("");
+  }
+
+  if (adminSummary) {
+    const rows = [
+      ["ขอรับบริการ", totals.serviceTotal, totals.serviceNew, totals.serviceToday],
+      ["นัดหมาย", totals.appointmentTotal, totals.appointmentNew, totals.appointmentToday],
+      ["ผู้ขาย", totals.sellerTotal, totals.sellerNew, totals.sellerToday],
+    ];
+
+    adminSummary.innerHTML = rows.map((row) => `
+      <tr>
+        <td>${row[0]}</td>
+        <td>${formatNumber(row[1])}</td>
+        <td>${formatNumber(row[2])}</td>
+        <td>${formatNumber(row[3])}</td>
+      </tr>
+    `).join("");
+  }
+
+  if (adminRecent) {
+    const recent = data.recent || [];
+    adminRecent.innerHTML = recent.length
+      ? recent.map((item) => `
+        <tr>
+          <td>${formatDateTime(item.submittedAt)}</td>
+          <td>${textCell(item.type)}</td>
+          <td>${textCell(item.primary)}</td>
+          <td>${textCell(item.status)}</td>
+        </tr>
+      `).join("")
+      : '<tr><td colspan="4">ยังไม่มีข้อมูลล่าสุด</td></tr>';
+  }
+
+  if (adminUpdated) {
+    adminUpdated.textContent = `อัปเดตล่าสุด: ${formatDateTime(data.updatedAt)}`;
+  }
+}
+
+async function loadAdminDashboard() {
+  if (!formEndpoint) {
+    setAdminStatus("ยังไม่ได้ตั้งค่า URL หลังบ้าน", "error");
+    return;
+  }
+
+  setAdminStatus("กำลังโหลด Dashboard...", "loading");
+
+  try {
+    const data = await requestAdminDashboardJsonp();
+
+    if (!data.ok) {
+      throw new Error(data.error || "โหลดข้อมูลไม่สำเร็จ");
+    }
+
+    renderAdminDashboard(data);
+    setAdminStatus("โหลด Dashboard แล้ว", "success");
+  } catch (error) {
+    setAdminStatus("โหลด Dashboard ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง", "error");
+  }
+}
+
+function requestAdminDashboardJsonp() {
+  return new Promise((resolve, reject) => {
+    const callbackName = `homeSukDashboard_${Date.now()}_${Math.round(Math.random() * 100000)}`;
+    const script = document.createElement("script");
+    const url = new URL(formEndpoint);
+
+    url.searchParams.set("action", "dashboard");
+    url.searchParams.set("password", adminPassword);
+    url.searchParams.set("callback", callbackName);
+
+    const timeout = window.setTimeout(() => {
+      cleanup();
+      reject(new Error("Dashboard request timeout"));
+    }, 15000);
+
+    function cleanup() {
+      window.clearTimeout(timeout);
+      delete window[callbackName];
+      script.remove();
+    }
+
+    window[callbackName] = (data) => {
+      cleanup();
+      resolve(data);
+    };
+
+    script.src = url.toString();
+    script.onerror = () => {
+      cleanup();
+      reject(new Error("Dashboard request failed"));
+    };
+
+    document.body.appendChild(script);
+  });
+}
+
+if (adminLoginForm) {
+  adminLoginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const password = new FormData(adminLoginForm).get("password");
+
+    if (password !== adminPassword) {
+      setAdminStatus("รหัสผ่านไม่ถูกต้อง", "error");
+      return;
+    }
+
+    adminDashboard.hidden = false;
+    setAdminStatus("เข้าสู่ระบบ Admin แล้ว", "success");
+    loadAdminDashboard();
+  });
+}
+
+if (adminRefresh) {
+  adminRefresh.addEventListener("click", loadAdminDashboard);
+}
