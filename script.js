@@ -11,6 +11,10 @@ const adminSummary = document.querySelector("[data-admin-summary]");
 const adminRecent = document.querySelector("[data-admin-recent]");
 const adminUpdated = document.querySelector("[data-admin-updated]");
 const adminRefresh = document.querySelector("[data-admin-refresh]");
+const adminDownloadPdf = document.querySelector("[data-admin-download-pdf]");
+const adminChartTotals = document.querySelector("[data-admin-chart-totals]");
+const adminChartStatus = document.querySelector("[data-admin-chart-status]");
+const adminChartToday = document.querySelector("[data-admin-chart-today]");
 
 const config = window.HOME_SUK_CONFIG || {};
 const formEndpoint = (config.formEndpoint || "").trim();
@@ -209,6 +213,63 @@ function renderAdminDashboard(data) {
   if (adminUpdated) {
     adminUpdated.textContent = `อัปเดตล่าสุด: ${formatDateTime(data.updatedAt)}`;
   }
+
+  renderAdminCharts(data, totalNew);
+}
+
+function renderBarChart(container, rows) {
+  if (!container) return;
+  const max = Math.max(...rows.map((row) => Number(row.value || 0)), 1);
+
+  container.innerHTML = rows.map((row) => {
+    const value = Number(row.value || 0);
+    const width = Math.max((value / max) * 100, value > 0 ? 4 : 0);
+
+    return `
+      <div class="bar-row">
+        <span class="bar-label">${textCell(row.label)}</span>
+        <span class="bar-track"><span class="bar-fill" style="width: ${width}%"></span></span>
+        <span class="bar-value">${formatNumber(value)}</span>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderAdminCharts(data, totalNew) {
+  const totals = data.totals || {};
+  const status = data.statusTotals || {};
+  const totalAll = Number(totals.serviceTotal || 0) + Number(totals.appointmentTotal || 0) + Number(totals.sellerTotal || 0);
+  const inProgress = Number(status.inProgress || 0) + Number(status.appointed || 0) + Number(status.followUp || 0);
+  const done = Number(status.done || 0);
+  const other = Math.max(totalAll - totalNew - inProgress - done, 0);
+
+  renderBarChart(adminChartTotals, [
+    { label: "ขอรับบริการ", value: totals.serviceTotal },
+    { label: "นัดหมาย", value: totals.appointmentTotal },
+    { label: "ผู้ขาย", value: totals.sellerTotal },
+  ]);
+
+  renderBarChart(adminChartToday, [
+    { label: "ขอรับบริการ", value: totals.serviceToday },
+    { label: "นัดหมาย", value: totals.appointmentToday },
+    { label: "ผู้ขาย", value: totals.sellerToday },
+  ]);
+
+  if (adminChartStatus) {
+    const newDeg = totalAll ? (totalNew / totalAll) * 360 : 0;
+    const progressDeg = totalAll ? (inProgress / totalAll) * 360 : 0;
+    const doneDeg = totalAll ? (done / totalAll) * 360 : 0;
+
+    adminChartStatus.innerHTML = `
+      <div class="donut-chart" data-total="${formatNumber(totalAll)}" style="--new: ${newDeg}deg; --progress: ${progressDeg}deg; --done: ${doneDeg}deg"></div>
+      <div class="status-legend">
+        <p><span><i class="legend-dot legend-new"></i>ใหม่</span><strong>${formatNumber(totalNew)}</strong></p>
+        <p><span><i class="legend-dot legend-progress"></i>กำลังดำเนินการ/นัดหมาย/รอติดตาม</span><strong>${formatNumber(inProgress)}</strong></p>
+        <p><span><i class="legend-dot legend-done"></i>เสร็จสิ้น</span><strong>${formatNumber(done)}</strong></p>
+        <p><span><i class="legend-dot legend-other"></i>อื่น ๆ</span><strong>${formatNumber(other)}</strong></p>
+      </div>
+    `;
+  }
 }
 
 async function loadAdminDashboard() {
@@ -287,4 +348,16 @@ if (adminLoginForm) {
 
 if (adminRefresh) {
   adminRefresh.addEventListener("click", loadAdminDashboard);
+}
+
+if (adminDownloadPdf) {
+  adminDownloadPdf.addEventListener("click", () => {
+    if (adminDashboard && adminDashboard.hidden) {
+      setAdminStatus("กรุณาเข้าสู่ระบบ Admin ก่อนดาวน์โหลด PDF", "error");
+      return;
+    }
+
+    document.title = "รายงาน Dashboard ชุมชนโฮมสุข";
+    window.print();
+  });
 }
