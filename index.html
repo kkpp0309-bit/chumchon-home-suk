@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="th">
   <head>
     <meta charset="utf-8">
@@ -41,6 +41,7 @@
         <a href="#seller">ผู้ขาย</a>
         <a href="#schedule">กำหนดการ</a>
         <a href="#contact">ติดต่อ</a>
+        <a href="#admin">Admin</a>
       </nav>
     </header>
 
@@ -100,7 +101,7 @@
         <a href="#seller"><strong>ผู้ขายเข้าร่วม</strong><span>ลงทะเบียนร้านค้า</span></a>
         <a href="#schedule"><strong>กำหนดการ</strong><span>จุดออกให้บริการ</span></a>
         <a href="#contact"><strong>ติดต่อพนักงาน</strong><span>สอบถาม/ประสานงาน</span></a>
-        <a href="#flow"><strong>Flow หลังบ้าน</strong><span>แนวทางจัดการข้อมูล</span></a>
+        <a href="#admin"><strong>Admin Dashboard</strong><span>สรุปรายงานหลังบ้าน</span></a>
       </section>
 
       <section class="section-band service-section" id="service">
@@ -299,6 +300,80 @@
           <article><span>4</span><p>แจ้งเตือน Admin ผ่าน LINE Messaging API</p></article>
           <article><span>5</span><p>Admin มอบหมายพนักงานและยืนยันนัดหมาย</p></article>
           <article><span>6</span><p>สรุป dashboard รายวัน รายพื้นที่ และรายบริการ</p></article>
+        </div>
+      </section>
+
+      <section class="section-band compact admin-section" id="admin">
+        <div class="section-heading">
+          <p class="eyebrow">ADMIN DASHBOARD</p>
+          <h2>ข้อมูลสำหรับ Admin</h2>
+          <p>เข้าสู่ระบบด้วยรหัสผ่านเพื่อดูสรุปข้อมูลทั้งหมดของชุมชนโฮมสุข สำหรับนำไปรายงานต่อ</p>
+        </div>
+
+        <form class="admin-login" data-admin-login>
+          <label>
+            รหัสผ่าน Admin
+            <input name="password" type="password" autocomplete="current-password" placeholder="กรอกรหัสผ่าน" required>
+          </label>
+          <button class="button primary" type="submit">เข้าสู่ Dashboard</button>
+          <p class="form-status" data-admin-status role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="admin-dashboard" data-admin-dashboard hidden>
+          <div class="admin-toolbar">
+            <div>
+              <h3>Dashboard ชุมชนโฮมสุข</h3>
+              <p data-admin-updated>กำลังโหลดข้อมูล...</p>
+            </div>
+            <button class="button tertiary" type="button" data-admin-refresh>รีเฟรชข้อมูล</button>
+          </div>
+
+          <div class="admin-stat-grid" data-admin-stats>
+            <article><span>-</span><p>ขอรับบริการทั้งหมด</p></article>
+            <article><span>-</span><p>นัดหมายทั้งหมด</p></article>
+            <article><span>-</span><p>ผู้ขายทั้งหมด</p></article>
+            <article><span>-</span><p>งานใหม่ทั้งหมด</p></article>
+          </div>
+
+          <div class="admin-report-grid">
+            <section>
+              <h4>สรุปตามประเภทงาน</h4>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>ประเภท</th>
+                      <th>ทั้งหมด</th>
+                      <th>ใหม่</th>
+                      <th>วันนี้</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-summary>
+                    <tr><td colspan="4">กำลังโหลดข้อมูล...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h4>รายการล่าสุด</h4>
+              <div class="admin-table-wrap">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>เวลา</th>
+                      <th>ประเภท</th>
+                      <th>ข้อมูลหลัก</th>
+                      <th>สถานะ</th>
+                    </tr>
+                  </thead>
+                  <tbody data-admin-recent>
+                    <tr><td colspan="4">กำลังโหลดข้อมูล...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
     </main>
