@@ -610,6 +610,13 @@ textarea:focus {
   color: var(--muted);
 }
 
+.admin-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
 .admin-stat-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -644,7 +651,14 @@ textarea:focus {
   gap: 14px;
 }
 
-.admin-report-grid section {
+.admin-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.admin-report-grid section,
+.admin-chart-grid section {
   min-width: 0;
   padding: 18px;
   border: 1px solid var(--line);
@@ -683,6 +697,119 @@ textarea:focus {
   color: #41544e;
 }
 
+.bar-chart {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(92px, 0.34fr) minmax(130px, 1fr) 42px;
+  gap: 10px;
+  align-items: center;
+}
+
+.bar-label,
+.bar-value,
+.status-chart span {
+  color: #41544e;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.bar-track {
+  overflow: hidden;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--green-120);
+}
+
+.bar-fill {
+  height: 100%;
+  min-width: 3px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green-800), var(--gold-500));
+}
+
+.today-chart .bar-fill {
+  background: linear-gradient(90deg, var(--blue-500), var(--green-650));
+}
+
+.status-chart {
+  display: grid;
+  grid-template-columns: minmax(118px, 140px) 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.donut-chart {
+  --new: 0deg;
+  --progress: 0deg;
+  --done: 0deg;
+  width: min(140px, 100%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      var(--green-800) 0 var(--new),
+      var(--gold-500) var(--new) calc(var(--new) + var(--progress)),
+      var(--blue-500) calc(var(--new) + var(--progress)) calc(var(--new) + var(--progress) + var(--done)),
+      var(--green-120) calc(var(--new) + var(--progress) + var(--done)) 360deg
+    );
+  position: relative;
+}
+
+.donut-chart::after {
+  content: attr(data-total);
+  position: absolute;
+  inset: 26%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--green-950);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.status-legend {
+  display: grid;
+  gap: 8px;
+}
+
+.status-legend p {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 50%;
+}
+
+.legend-new {
+  background: var(--green-800);
+}
+
+.legend-progress {
+  background: var(--gold-500);
+}
+
+.legend-done {
+  background: var(--blue-500);
+}
+
+.legend-other {
+  background: var(--green-120);
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -716,7 +843,8 @@ textarea:focus {
   }
 
   .admin-stat-grid,
-  .admin-report-grid {
+  .admin-report-grid,
+  .admin-chart-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -765,7 +893,8 @@ textarea:focus {
   }
 
   .admin-login,
-  .admin-toolbar {
+  .admin-toolbar,
+  .admin-toolbar-actions {
     display: grid;
     align-items: stretch;
   }
@@ -801,7 +930,17 @@ textarea:focus {
   .flow-grid,
   .admin-stat-grid,
   .admin-report-grid,
+  .admin-chart-grid,
   .site-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .bar-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .status-chart {
     grid-template-columns: 1fr;
   }
 
@@ -815,5 +954,52 @@ textarea:focus {
 
   .site-footer {
     display: grid;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    font-size: 12px;
+  }
+
+  .site-header,
+  .skip-link,
+  .hero,
+  .quick-menu,
+  #service,
+  #appointment,
+  #seller,
+  #schedule,
+  #contact,
+  #flow,
+  .admin-login,
+  .admin-toolbar-actions,
+  .site-footer {
+    display: none !important;
+  }
+
+  .section-band,
+  .admin-section {
+    padding: 0;
+    background: #fff;
+  }
+
+  .admin-dashboard {
+    display: grid !important;
+  }
+
+  .admin-toolbar,
+  .admin-stat-grid article,
+  .admin-chart-grid section,
+  .admin-report-grid section {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .admin-stat-grid,
+  .admin-chart-grid,
+  .admin-report-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
