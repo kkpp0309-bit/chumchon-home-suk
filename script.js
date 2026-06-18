@@ -4,6 +4,8 @@ const nav = document.querySelector(".site-nav");
 const year = document.querySelector("#year");
 const forms = document.querySelectorAll("form[data-home-suk-form]");
 const adminLoginForm = document.querySelector("[data-admin-login]");
+const adminLoginButton = document.querySelector("[data-admin-login] button[type='submit']");
+const adminPasswordInput = document.querySelector("[data-admin-login] input[name='password']");
 const adminDashboard = document.querySelector("[data-admin-dashboard]");
 const adminStatus = document.querySelector("[data-admin-status]");
 const adminStats = document.querySelector("[data-admin-stats]");
@@ -473,27 +475,48 @@ function requestJsonp(action, params) {
 
 loadPublicSchedule();
 
-if (adminLoginForm) {
-  adminLoginForm.addEventListener("submit", (event) => {
+function handleAdminLogin(event) {
+  if (event) {
     event.preventDefault();
-    const password = String(new FormData(adminLoginForm).get("password") || "").trim();
+  }
 
-    if (password !== adminPassword) {
-      setAdminStatus("รหัสผ่านไม่ถูกต้อง", "error");
-      return;
-    }
+  const password = String(adminPasswordInput ? adminPasswordInput.value : "").trim();
 
-    showAdminEditingTools(defaultSchedule);
+  if (password !== adminPassword) {
+    setAdminStatus("รหัสผ่านไม่ถูกต้อง", "error");
+    return;
+  }
+
+  showAdminEditingTools(defaultSchedule);
+
+  if (adminLoginForm) {
     adminLoginForm.hidden = true;
-    setAdminStatus("เข้าสู่ระบบ Admin แล้ว เลื่อนลงไปแก้ไขกำหนดการได้เลย", "success");
-    loadAdminDashboard();
+  }
 
-    window.setTimeout(() => {
-      document.querySelector("#admin-schedule-editor")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 350);
+  setAdminStatus("เข้าสู่ระบบ Admin แล้ว เลื่อนลงไปแก้ไขกำหนดการได้เลย", "success");
+  loadAdminDashboard();
+
+  window.setTimeout(() => {
+    document.querySelector("#admin-schedule-editor")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 350);
+}
+
+if (adminLoginForm) {
+  adminLoginForm.addEventListener("submit", handleAdminLogin);
+}
+
+if (adminLoginButton) {
+  adminLoginButton.addEventListener("click", handleAdminLogin);
+}
+
+if (adminPasswordInput) {
+  adminPasswordInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      handleAdminLogin(event);
+    }
   });
 }
 
