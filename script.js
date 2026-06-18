@@ -373,6 +373,7 @@ function renderAdminCharts(data, totalNew) {
 async function loadAdminDashboard() {
   if (!formEndpoint) {
     setAdminStatus("ยังไม่ได้ตั้งค่า URL หลังบ้าน", "error");
+    showAdminEditingTools(defaultSchedule);
     return;
   }
 
@@ -388,8 +389,22 @@ async function loadAdminDashboard() {
     renderAdminDashboard(data);
     setAdminStatus("โหลด Dashboard แล้ว", "success");
   } catch (error) {
-    setAdminStatus("โหลด Dashboard ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง", "error");
+    showAdminEditingTools(defaultSchedule);
+    setAdminStatus("เข้าสู่ระบบ Admin แล้ว แต่ Dashboard โหลดไม่สำเร็จชั่วคราว ยังแก้ไขกำหนดการได้", "success");
   }
+}
+
+function showAdminEditingTools(schedule) {
+  if (adminDashboard) {
+    adminDashboard.hidden = false;
+  }
+
+  if (adminSheetLink) {
+    adminSheetLink.href = adminSheetUrl;
+    adminSheetLink.hidden = false;
+  }
+
+  fillScheduleEditor(schedule || defaultSchedule);
 }
 
 async function loadPublicSchedule() {
@@ -461,16 +476,24 @@ loadPublicSchedule();
 if (adminLoginForm) {
   adminLoginForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const password = new FormData(adminLoginForm).get("password");
+    const password = String(new FormData(adminLoginForm).get("password") || "").trim();
 
     if (password !== adminPassword) {
       setAdminStatus("รหัสผ่านไม่ถูกต้อง", "error");
       return;
     }
 
-    adminDashboard.hidden = false;
-    setAdminStatus("เข้าสู่ระบบ Admin แล้ว", "success");
+    showAdminEditingTools(defaultSchedule);
+    adminLoginForm.hidden = true;
+    setAdminStatus("เข้าสู่ระบบ Admin แล้ว เลื่อนลงไปแก้ไขกำหนดการได้เลย", "success");
     loadAdminDashboard();
+
+    window.setTimeout(() => {
+      document.querySelector("#admin-schedule-editor")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 350);
   });
 }
 
