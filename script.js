@@ -535,15 +535,21 @@ if (adminScheduleForm) {
 
     const schedule = collectScheduleEditor();
     const button = adminScheduleForm.querySelector("button[type='submit']");
+    const scheduleParams = {
+      password: adminPassword,
+    };
+
+    schedule.forEach((item, index) => {
+      const number = index + 1;
+      scheduleParams[`title_${number}`] = item.title;
+      scheduleParams[`detail_${number}`] = item.detail;
+    });
 
     if (button) button.disabled = true;
     setAdminScheduleStatus("กำลังบันทึกกำหนดการ...", "loading");
 
     try {
-      const data = await requestJsonp("saveSchedule", {
-        password: adminPassword,
-        schedule: JSON.stringify(schedule),
-      });
+      const data = await requestJsonp("saveSchedule", scheduleParams);
 
       if (!data.ok) {
         throw new Error(data.error || "Save schedule failed");
