@@ -16,8 +16,8 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/ChatGPT%20Image%208%20%E0%B8%A1%E0%B8%B4.%E0%B8%A2.%202569%2014_08_05.png">
     <title>ชุมชนโฮมสุข | ธ.ก.ส. เคลื่อนที่ใกล้บ้าน</title>
-    <link rel="preload" href="style.css?v=admin-dashboard-4" as="style">
-    <link rel="stylesheet" href="style.css?v=admin-dashboard-4">
+    <link rel="preload" href="style.css?v=admin-dashboard-5" as="style">
+    <link rel="stylesheet" href="style.css?v=admin-dashboard-5">
   </head>
   <body>
     <a class="skip-link" href="#service">ข้ามไปยังบริการ</a>
@@ -254,22 +254,22 @@
           <h2>กำหนดการออกให้บริการ</h2>
           <p>ใช้เป็นหน้าปลายทางของปุ่มกำหนดการใน Rich Menu เพื่อแจ้งขั้นตอนและช่วงเวลาลงพื้นที่</p>
         </div>
-        <div class="timeline" aria-label="ปฏิทินออกหน่วย">
-          <article>
-            <strong>สัปดาห์ที่ 1</strong>
-            <p>ประชาสัมพันธ์ผ่าน LINE OA ผู้นำชุมชน อสม. สหกรณ์ และเครือข่ายในพื้นที่</p>
+        <div class="timeline" aria-label="ปฏิทินออกหน่วย" data-schedule-list>
+          <article data-schedule-card>
+            <strong data-schedule-title>สัปดาห์ที่ 1</strong>
+            <p data-schedule-detail>ประชาสัมพันธ์ผ่าน LINE OA ผู้นำชุมชน อสม. สหกรณ์ และเครือข่ายในพื้นที่</p>
           </article>
-          <article>
-            <strong>สัปดาห์ที่ 2</strong>
-            <p>เปิดรับแจ้งความประสงค์ นัดหมายล่วงหน้า และลงทะเบียนผู้ขายสินค้า</p>
+          <article data-schedule-card>
+            <strong data-schedule-title>สัปดาห์ที่ 2</strong>
+            <p data-schedule-detail>เปิดรับแจ้งความประสงค์ นัดหมายล่วงหน้า และลงทะเบียนผู้ขายสินค้า</p>
           </article>
-          <article>
-            <strong>สัปดาห์ที่ 3</strong>
-            <p>ทีม ธ.ก.ส. ลงพื้นที่ให้บริการ พร้อมตลาดสินค้าชุมชน</p>
+          <article data-schedule-card>
+            <strong data-schedule-title>สัปดาห์ที่ 3</strong>
+            <p data-schedule-detail>ทีม ธ.ก.ส. ลงพื้นที่ให้บริการ พร้อมตลาดสินค้าชุมชน</p>
           </article>
-          <article>
-            <strong>หลังจบงาน</strong>
-            <p>สรุปผลบริการ ยอดนัดหมาย ยอดผู้ขาย และติดตามผลลูกค้า</p>
+          <article data-schedule-card>
+            <strong data-schedule-title>หลังจบงาน</strong>
+            <p data-schedule-detail>สรุปผลบริการ ยอดนัดหมาย ยอดผู้ขาย และติดตามผลลูกค้า</p>
           </article>
         </div>
       </section>
@@ -354,6 +354,38 @@
             </section>
           </div>
 
+          <section class="admin-schedule-editor">
+            <div>
+              <h4>แก้ไขกำหนดการหน้าเว็บไซต์</h4>
+              <p>Admin ปรับหัวข้อและรายละเอียดได้จากตรงนี้ เมื่อบันทึกแล้วหน้า “กำหนดการออกให้บริการ” จะอัปเดตตามข้อมูลหลังบ้าน</p>
+            </div>
+            <form class="schedule-editor-form" data-admin-schedule-form>
+              <div class="schedule-editor-grid" data-admin-schedule-editor>
+                <article>
+                  <label>หัวข้อ 1<input name="title_1" value="สัปดาห์ที่ 1"></label>
+                  <label>รายละเอียด 1<textarea name="detail_1" rows="3">ประชาสัมพันธ์ผ่าน LINE OA ผู้นำชุมชน อสม. สหกรณ์ และเครือข่ายในพื้นที่</textarea></label>
+                </article>
+                <article>
+                  <label>หัวข้อ 2<input name="title_2" value="สัปดาห์ที่ 2"></label>
+                  <label>รายละเอียด 2<textarea name="detail_2" rows="3">เปิดรับแจ้งความประสงค์ นัดหมายล่วงหน้า และลงทะเบียนผู้ขายสินค้า</textarea></label>
+                </article>
+                <article>
+                  <label>หัวข้อ 3<input name="title_3" value="สัปดาห์ที่ 3"></label>
+                  <label>รายละเอียด 3<textarea name="detail_3" rows="3">ทีม ธ.ก.ส. ลงพื้นที่ให้บริการ พร้อมตลาดสินค้าชุมชน</textarea></label>
+                </article>
+                <article>
+                  <label>หัวข้อ 4<input name="title_4" value="หลังจบงาน"></label>
+                  <label>รายละเอียด 4<textarea name="detail_4" rows="3">สรุปผลบริการ ยอดนัดหมาย ยอดผู้ขาย และติดตามผลลูกค้า</textarea></label>
+                </article>
+              </div>
+              <div class="admin-toolbar-actions">
+                <button class="button primary" type="submit">บันทึกกำหนดการ</button>
+                <button class="button tertiary" type="button" data-admin-schedule-reset>คืนค่าเริ่มต้น</button>
+              </div>
+              <p class="form-status" data-admin-schedule-status role="status" aria-live="polite"></p>
+            </form>
+          </section>
+
           <div class="admin-report-grid">
             <section>
               <h4>สรุปตามประเภทงาน</h4>
@@ -407,7 +439,7 @@
         formEndpoint: "https://script.google.com/macros/s/AKfycbx3VYMNE0VPY7b_xrZ-8Sv8-KIDumxSasJqm_6KyL7-j8S_TSnNcbEhCPOCMVQOcLsM/exec",
       };
     </script>
-    <script src="script.js?v=admin-dashboard-4" defer></script>
+    <script src="script.js?v=admin-dashboard-5" defer></script>
   </body>
 </html>
 
