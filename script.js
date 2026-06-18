@@ -12,6 +12,7 @@ const adminRecent = document.querySelector("[data-admin-recent]");
 const adminUpdated = document.querySelector("[data-admin-updated]");
 const adminRefresh = document.querySelector("[data-admin-refresh]");
 const adminDownloadPdf = document.querySelector("[data-admin-download-pdf]");
+const adminSheetLink = document.querySelector("[data-admin-sheet-link]");
 const adminChartTotals = document.querySelector("[data-admin-chart-totals]");
 const adminChartStatus = document.querySelector("[data-admin-chart-status]");
 const adminChartToday = document.querySelector("[data-admin-chart-today]");
@@ -19,6 +20,7 @@ const adminChartToday = document.querySelector("[data-admin-chart-today]");
 const config = window.HOME_SUK_CONFIG || {};
 const formEndpoint = (config.formEndpoint || "").trim();
 const adminPassword = "baac2024";
+const adminSheetUrl = "https://docs.google.com/spreadsheets/d/1Xu0sLbLoSRgrncvejH102CeczsmMahH3pDLNcOOWXBs/edit";
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -212,6 +214,16 @@ function renderAdminDashboard(data) {
 
   if (adminUpdated) {
     adminUpdated.textContent = `อัปเดตล่าสุด: ${formatDateTime(data.updatedAt)}`;
+  }
+
+  if (adminSheetLink) {
+    const sheetUrl = data.spreadsheetUrl || adminSheetUrl;
+    if (sheetUrl) {
+      adminSheetLink.href = sheetUrl;
+      adminSheetLink.hidden = false;
+    } else {
+      adminSheetLink.hidden = true;
+    }
   }
 
   renderAdminCharts(data, totalNew);
