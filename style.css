@@ -201,11 +201,23 @@ a {
 }
 
 .hero-actions,
-.contact-actions {
+.contact-actions,
+.schedule-admin-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 28px;
+}
+
+.schedule-admin-actions {
+  align-items: center;
+  margin-top: 18px;
+}
+
+.schedule-admin-actions span {
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 800;
 }
 
 .button {
@@ -950,6 +962,7 @@ textarea:focus {
 
   .contact-actions .button,
   .hero-actions .button,
+  .schedule-admin-actions .button,
   .admin-toolbar .button {
     width: 100%;
   }
