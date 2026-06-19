@@ -434,7 +434,7 @@ function requestAdminDashboardJsonp() {
   });
 }
 
-function requestJsonp(action, params) {
+function requestJsonp(action, params, timeoutMs = 45000) {
   return new Promise((resolve, reject) => {
     const callbackName = `homeSukCallback_${Date.now()}_${Math.round(Math.random() * 100000)}`;
     const script = document.createElement("script");
@@ -442,6 +442,7 @@ function requestJsonp(action, params) {
 
     url.searchParams.set("action", action);
     url.searchParams.set("callback", callbackName);
+    url.searchParams.set("_", Date.now().toString());
 
     Object.keys(params || {}).forEach((key) => {
       url.searchParams.set(key, params[key]);
@@ -449,8 +450,8 @@ function requestJsonp(action, params) {
 
     const timeout = window.setTimeout(() => {
       cleanup();
-      reject(new Error("Dashboard request timeout"));
-    }, 15000);
+      reject(new Error("Request timeout"));
+    }, timeoutMs);
 
     function cleanup() {
       window.clearTimeout(timeout);
@@ -466,7 +467,7 @@ function requestJsonp(action, params) {
     script.src = url.toString();
     script.onerror = () => {
       cleanup();
-      reject(new Error("Dashboard request failed"));
+      reject(new Error("Request failed"));
     };
 
     document.body.appendChild(script);
@@ -549,7 +550,7 @@ if (adminScheduleForm) {
     setAdminScheduleStatus("กำลังบันทึกกำหนดการ...", "loading");
 
     try {
-      const data = await requestJsonp("saveSchedule", scheduleParams);
+      const data = await requestJsonp("saveSchedule", scheduleParams, 60000);
 
       if (!data.ok) {
         throw new Error(data.error || "Save schedule failed");
